@@ -5,7 +5,7 @@ unit spisokObr;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, LCLType;
 
 const
   MaxAr = 23;
@@ -26,10 +26,12 @@ var
   color: Enum;
   root, deletenode: Pnode;
   H, F: TextFile;
-  S: String;
+  S, T: String;
   Fam, Name, PName, BathYear, Gr: string;
-  Pr, i: integer;
+  Pr, i, l: integer;
   FileOfBaze: ShortString = 'SpisokNew.txt';
+  SO_FileName: string;
+  //opf: integer; //индикатор OpenFile
 
 function StrComp(S: string; T: string): Integer;
 procedure PrintSpisok;
@@ -65,7 +67,7 @@ begin
   if tree <> nil then
      begin
       FixSpisok(tree^.left);
-      writeln(H, tree^.key);
+      writeln(H, tree^.key + ' ' + tree^.group);
       FixSpisok(tree^.right);
      end;
 end;
@@ -293,15 +295,15 @@ end;
 
 procedure insert(key: string);   //создание узла по ключу и вставка
 var
-  l: integer;
   z, x, y: Pnode;
 begin
 
   l := LastDelimiter(' ', S);
   Gr := copy(S, l+1, Length(S) - l);
+  T := copy(S, 1, l-1);
 
   new(z);            //запрос динамической памяти для узла
-    z^.key := key;     //*****************
+    z^.key := T;     //*****************
     z^.color := RED;
     z^.group := Gr;
     z^.left := nil;
@@ -491,7 +493,8 @@ begin
   Pr := 0;
   if FileExists(FileOfBaze) = True then
   begin
-       AssignFile(H, FileOfBaze);
+       SO_FileName := FileOfBaze;
+       AssignFile(H, SO_FileName);
        Reset(H);
        while not Eof(H) do
        begin
@@ -511,7 +514,6 @@ function OpenF_Go(Name_F: string): string;
 begin
   Pr := 0;
   AssignFile(H, Name_F);
-  //AssignFile(F, 'SpisokNew.txt');
 
   Reset(H);
 

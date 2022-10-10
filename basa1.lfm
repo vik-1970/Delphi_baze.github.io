@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 404
+  Left = 394
   Height = 635
-  Top = 48
+  Top = 119
   Width = 726
   Caption = 'Basa users'
   ClientHeight = 609
@@ -16,6 +16,7 @@ object Form1: TForm1
     Width = 726
     Align = alClient
     BorderStyle = bsNone
+    OnClick = MemoClick
     OnKeyPress = MemoKeyPress
     ParentShowHint = False
     ScrollBars = ssBoth
@@ -33,7 +34,7 @@ object Form1: TForm1
     ClientWidth = 724
     TabOrder = 1
     object Label1: TLabel
-      Left = 461
+      Left = 352
       Height = 18
       Top = 80
       Width = 42
@@ -44,7 +45,9 @@ object Form1: TForm1
       Left = 8
       Height = 35
       Top = 72
-      Width = 440
+      Width = 328
+      OnClick = EFamClick
+      OnKeyDown = EFamKeyDown
       TabOrder = 0
     end
     object Label2: TLabel
@@ -76,6 +79,7 @@ object Form1: TForm1
       Height = 35
       Top = 120
       Width = 328
+      OnKeyDown = ENameKeyDown
       TabOrder = 1
     end
     object EPName: TEdit
@@ -83,6 +87,7 @@ object Form1: TForm1
       Height = 35
       Top = 168
       Width = 328
+      OnKeyDown = EPNameKeyDown
       TabOrder = 2
     end
     object EYear: TEdit
@@ -90,12 +95,13 @@ object Form1: TForm1
       Height = 35
       Top = 216
       Width = 96
+      OnKeyDown = EYearKeyDown
       TabOrder = 3
     end
     object BAdd: TButton
-      Left = 576
+      Left = 440
       Height = 25
-      Top = 48
+      Top = 24
       Width = 112
       Caption = 'Add User'
       OnClick = BAddClick
@@ -104,7 +110,7 @@ object Form1: TForm1
     object BDelite: TButton
       Left = 576
       Height = 25
-      Top = 88
+      Top = 24
       Width = 112
       Caption = 'Delete User'
       OnClick = BDeliteClick
@@ -113,14 +119,14 @@ object Form1: TForm1
     object BSearchGr: TButton
       Left = 576
       Height = 25
-      Top = 128
+      Top = 72
       Width = 112
       Caption = 'Search Group'
       OnClick = BSearchGrClick
       TabOrder = 6
     end
     object BPrintAll: TButton
-      Left = 432
+      Left = 424
       Height = 25
       Top = 223
       Width = 118
@@ -143,6 +149,8 @@ object Form1: TForm1
       Top = 216
       Width = 120
       AutoSelect = False
+      OnClick = EGroupClick
+      OnKeyDown = EGroupKeyDown
       OnKeyPress = EGroupKeyPress
       TabOrder = 9
     end
@@ -158,13 +166,15 @@ object Form1: TForm1
       Left = 8
       Height = 35
       Top = 16
-      Width = 438
+      Width = 328
       AutoSelect = False
+      OnClick = ESearchClick
+      OnKeyDown = ESearchKeyDown
       OnKeyPress = ESearchKeyPress
       TabOrder = 10
     end
     object Label6: TLabel
-      Left = 461
+      Left = 352
       Height = 18
       Top = 24
       Width = 74
@@ -172,12 +182,13 @@ object Form1: TForm1
       ParentColor = False
     end
     object BExit: TButton
-      Left = 576
+      Left = 568
       Height = 25
       Top = 223
-      Width = 112
-      Caption = 'Exit'
+      Width = 136
+      Caption = 'Exit without Saving'
       Color = clMenuBar
+      OnClick = BExitClick
       TabOrder = 11
     end
     object BErase: TButton
@@ -188,6 +199,15 @@ object Form1: TForm1
       Caption = 'Erase'
       OnClick = BEraseClick
       TabOrder = 12
+    end
+    object BChangeGr: TButton
+      Left = 576
+      Height = 25
+      Top = 120
+      Width = 112
+      Caption = 'BChangeGr'
+      OnClick = BChangeGrClick
+      TabOrder = 13
     end
   end
   object MainMenu: TMainMenu
