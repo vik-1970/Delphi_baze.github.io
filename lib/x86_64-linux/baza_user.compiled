@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1661927675"/>
+  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/vik/Delphi/linux/exper/lib/x86_64-linux -Fu/usr/lib/lazarus/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/lcl/units/x86_64-linux -Fu/usr/lib/lazarus/components/freetype/lib/x86_64-linux -Fu/usr/lib/lazarus/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/packager/units/x86_64-linux -Fu/home/vik/Delphi/linux/exper/ -FU/home/vik/Delphi/linux/exper/lib/x86_64-linux/ -FE/home/vik/Delphi/linux/exper/ -o/home/vik/Delphi/linux/exper/baza_user -dLCL -dLCLgtk2 baza_user.lpr"/>
+</CONFIG>
