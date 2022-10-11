@@ -532,6 +532,16 @@ begin
     end;
 end;
 
+function okonc(n: integer): string;
+begin
+  case n of
+  1,21,31,41,51: Result:='ь. ';
+  2..4,22..24,32..34,42..44: Result:='ля. ';
+  5..20,25..30,35..40,45..50: Result:='ей. ';
+  else Result:='ей';
+  end;
+end;
+
 procedure searchAllKey(key: string);
 var
   n: integer;
@@ -543,7 +553,7 @@ begin
     '" не найдено в базе.' + #13#10 +
     'Проверьте строку поиска, или раскладку клавиатуры.')
   else
-    Form1.Memo.Lines.Add('Найдено ' + IntToStr(n) + ' пользователей. ' +
+    Form1.Memo.Lines.Add('Найдено ' + IntToStr(n) + ' пользовател' + okonc(n) +
     'Для выбора кликните мышью по строке пользователя.');
     //+ IfThen(n <= 4, 'я', 'ей'));
 end;
