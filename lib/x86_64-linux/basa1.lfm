@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 360
+  Left = 364
   Height = 635
-  Top = 124
+  Top = 103
   Width = 726
   Caption = 'Basa users'
   ClientHeight = 609
@@ -68,11 +68,11 @@ object Form1: TForm1
       ParentColor = False
     end
     object Label4: TLabel
-      Left = 120
+      Left = 112
       Height = 18
       Top = 223
-      Width = 79
-      Caption = 'Year of Birth'
+      Width = 88
+      Caption = '<Year of Birth'
       ParentColor = False
     end
     object EName: TEdit
@@ -100,10 +100,10 @@ object Form1: TForm1
       TabOrder = 3
     end
     object BAdd: TButton
-      Left = 440
+      Left = 448
       Height = 25
       Top = 24
-      Width = 112
+      Width = 104
       Caption = 'Add User'
       OnClick = BAddClick
       TabOrder = 4
@@ -159,8 +159,8 @@ object Form1: TForm1
       Left = 352
       Height = 18
       Top = 223
-      Width = 40
-      Caption = 'Group'
+      Width = 49
+      Caption = '<Group'
       ParentColor = False
     end
     object ESearch: TEdit
@@ -177,9 +177,9 @@ object Form1: TForm1
     object Label6: TLabel
       Left = 352
       Height = 18
-      Top = 24
-      Width = 74
-      Caption = 'Search FIO'
+      Top = 31
+      Width = 81
+      Caption = 'Search User'
       ParentColor = False
     end
     object BExit: TButton

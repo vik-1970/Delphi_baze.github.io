@@ -348,8 +348,9 @@ end;
 end;
 
 procedure TForm1.BAddClick(Sender: TObject);
-var Fa, Na, Pa: string;
-var n: Pnode;
+var
+Fa, Na, Pa: string;
+n: Pnode;
 begin
     if (EFam.Text <> '') and (EName.Text <> '') and (EPName.Text <> '')
   and(EYear.Text <> '') {and (EGroup.Text <> '')} then
