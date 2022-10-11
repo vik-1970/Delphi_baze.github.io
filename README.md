@@ -1,5 +1,4 @@
-#######################################
-#             Delphi_baze             #
-# Project for lean Delphi programming #
-#                                     #
-#######################################
+------------------------------------------
+-             Delphi_baze                -
+- Project simply lean Delphi programming -
+------------------------------------------
