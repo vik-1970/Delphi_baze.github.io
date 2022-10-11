@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="80"/>
       </Unit>
       <Unit>
         <Filename Value="basa1.pas"/>
@@ -19,19 +19,19 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="525"/>
-        <CursorPos X="16" Y="541"/>
-        <UsageCount Value="79"/>
+        <TopLine Value="120"/>
+        <CursorPos Y="118"/>
+        <UsageCount Value="80"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="spisokobr.pas"/>
         <UnitName Value="spisokObr"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="259"/>
-        <CursorPos Y="291"/>
+        <TopLine Value="436"/>
+        <CursorPos X="12" Y="451"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit>

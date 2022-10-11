@@ -80,6 +80,8 @@ procedure searchAllKey(key: string);
 procedure searchAllNode(tree: Pnode; key: string; out n: integer);
 procedure searchGrNode(tree: Pnode; key: string; out n: integer);
 procedure searchGr(key: string);
+function okonc(n: integer): string;
+function razbor(var S: string): string;
 
 implementation
 
@@ -104,14 +106,14 @@ begin
      begin
           Memo.Lines.SaveToFile(SaveDialog.FileName + '.txt');
           AssignFile(H, SaveDialog.FileName + '.txt');
-            Memo.Lines.Text := 'Создан файл базы пользователей ' +
+          Memo.Lines.Text := 'Создан файл базы пользователей ' +
           SaveDialog.FileName + '.txt';
           SO_FileName := SaveDialog.FileName + '.txt'
      end;
   end;
-  if root <> nil then
-  FixFile;
-  Pr := 0;
+  if root <> nil then     //SaveDialog создает пустой файл. Если до этого
+     FixFile;             //набиралась новая база или старая сюда ложиться
+  Pr := 0;                // необходимо ее вписать в файл
 end;
 
 
@@ -314,7 +316,7 @@ begin
       ESearch.Text := Memo.SelText;
 end;
 
-{
+{    //working in Windows 10
 with Memo do
 begin
   Line:=SendMessage(Handle, EM_LINEFROMCHAR, SelStart,0);
@@ -487,7 +489,7 @@ begin
        i := 0;
        Memo.Clear;
        inOrder(root);
-       Memo.Lines.Add(IntToStr(i) + ' пользователей в базе.')
+       Memo.Lines.Add(IntToStr(i) + ' пользовател' + okonc(i) + ' в базе.')
       end;
 end;
 
@@ -501,7 +503,7 @@ begin
       Form1.Memo.Lines.Text:='Группы "' + key + '" не найдено в базе.'
     else
       Form1.Memo.Lines.Add('В группе '+'"'+key+'"'+'   '
-      +IntToStr(n)+' пользовател'+IfThen(n <= 4, 'я', 'ей'));
+      +IntToStr(n)+' пользовател'+okonc(n)+'.');
 end;
 
 procedure searchGrNode(tree: Pnode; key: string; out n: integer);
@@ -535,10 +537,10 @@ end;
 function okonc(n: integer): string;
 begin
   case n of
-  1,21,31,41,51: Result:='ь. ';
-  2..4,22..24,32..34,42..44: Result:='ля. ';
-  5..20,25..30,35..40,45..50: Result:='ей. ';
-  else 'ей';
+  1,21,31,41,51: Result:='ь';
+  2..4,22..24,32..34,42..44: Result:='я';
+  5..20,25..30,35..40,45..50: Result:='ей';
+  else Result:='ей';
   end;
 end;
 
@@ -554,8 +556,7 @@ begin
     'Проверьте строку поиска, или раскладку клавиатуры.')
   else
     Form1.Memo.Lines.Add('Найдено ' + IntToStr(n) + ' пользовател' + okonc(n) +
-    'Для выбора кликните мышью по строке пользователя.');
-    //+ IfThen(n <= 4, 'я', 'ей'));
+    '.  Для выбора кликните мышью по строке пользователя.');
 end;
 
 procedure inOrder(tree: Pnode);

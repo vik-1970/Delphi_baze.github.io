@@ -34,16 +34,12 @@ var
   //opf: integer; //индикатор OpenFile
 
 function StrComp(S: string; T: string): Integer;
-procedure PrintSpisok;
 procedure rotate_left( var x: Pnode);
 procedure rotate_right(var y: Pnode);
 procedure swap_t(var x, y: Pnode);
 procedure InsertFixUp(n: Pnode);
 procedure insert(key: string);
 function search_node(n: Pnode; key: string): Pnode;     //
-procedure search_key(key : string);                   //
-procedure preOrder(tree: Pnode);
-procedure print_node(node: Pnode);
 procedure removeFixUp(n: Pnode; parent: Pnode);  //
 procedure remove_node(n: Pnode);     //
 procedure FixSpisok(tree: Pnode);
@@ -245,54 +241,6 @@ begin
 		n^.color := BLACK;
 end;
 
-procedure print_node(node: Pnode);
-begin
-	if (node = nil)  then
-		exit;
-	if (node^.parent = nil) then
-        Writeln('key ', node^.key, ' color (',Ord(node^.color), '), is root ')
-	else if(node^.parent^.left = node)  then
-        Writeln('key ', node^.key, ' color (',Ord(node^.color), ') is ',
-         node^.parent^.key,'''s left chaild')
-	else
-        Writeln('key ', node^.key, ' color (',Ord(node^.color), ') is ',
-         node^.parent^.key,'''s right chaild');
-
-	print_node(node^.left);
-	print_node(node^.right);
-end;
-
-procedure preOrder(tree: Pnode);
-begin
-    if(tree <> nil) then
-    begin
-        writeln(tree^.key, ' (', Ord( tree^.color), ') ,');
-        preOrder(tree^.left);
-        preOrder(tree^.right);
-    end;
-end;
-
-procedure search_key(key : string);
-var
-  n: Pnode;
-  ch: Char;
-begin
-  n := search_node(root, key);
-    if n = nil then
-    begin
-        writeln('Пользователь "' , key, '" не найден в базе.');
-        write('Добавить пользователя "', key, '" в базу? (y or n): ');
-        readln(ch);
-        if ch = 'y' then
-        begin
-          writeln(#10, 'Пользователь "', key, '" добавлен в базу.');
-          insert(key);
-        end;
-    end
-    else
-        writeln('Найден пользователь = ', n^.key);
-end;
-
 procedure insert(key: string);   //создание узла по ключу и вставка
 var
   z, x, y: Pnode;
@@ -474,20 +422,6 @@ begin
     Result := 0;
 end;
 
-procedure PrintSpisok;
-begin
-    writeln('Список пользователей из ', ExpandFileName('Spisok1.txt'), ' : ' +
-     #10, '------------------------------------');
-    Reset(H);
-    while not Eof(H) do
-    begin
-      readln(H, S);
-      writeln(S);
-    end;
-    closefile(H);
-    writeln('-------------------------------------');
-end;
-
 procedure RB_Go;
 begin
   Pr := 0;
@@ -514,9 +448,7 @@ function OpenF_Go(Name_F: string): string;
 begin
   Pr := 0;
   AssignFile(H, Name_F);
-
   Reset(H);
-
     while not Eof(H) do
     begin
       readln(H, S);
@@ -550,70 +482,5 @@ end;
 
 
 end.
-
-
-
-
-   {
-  // Уничтожить красные и черные деревья
-void RBTree<T>::destory(RBTNode<T>* &node)
-
-	if (node == NULL)
-		return;
-	destory(node->left);
-	destory(node->right);
-	delete node;
-	node = nullptr;
-
-
-
-procedure MemoLog(msgg: string);
-begin
-    Form1.Memo.Lines.Add(msgg);
-end;
-
-
-   procedure MemoLog(msgg: string); //var Sender: TMemo);
-begin
-    Form1.Memo.Lines.Add(msgg); // or Form1.Memo.Append(msgg);
-    // Form1.Memo.Lines.Strings[0]; //текст первой строки
-     //Form1.Memo.Text:= msgg;      // одноразовый
-     //Memo.Clear
-     //application.ProcessMessages;
-end;
-       //Memo.Lines.LoadFromFile(OpenDialog.FileName);
-
-   while Pr <> 9 do
-    begin
-      writeln(#10 + '---------------------------------' +     #10 +
-              '1. Поиск пользователя.' +                #10 +
-              '2. Добавить пользователя.' +             #10 +
-              '3. Удалить пользователя.' +              #10 +
-              '4. Поиск ро группе.' +                   #10 +
-              '5. Распечатать всех пользователей.' +    #10 +
-              '6. Распечатать дерево.' +                #10 +
-              '7. Печать списка из файла.' +            #10 +
-              '8. Переписать базу в файл.' +            #10 +
-              '9. Выход.' +                             #10 +
-              '---------------------------------');
-     writeln('Выбирите опцию : ');
-      readln(Pr);
-      case Pr of
-        1: SearchUser;
-        2: AddNewUser;
-        3: DeleteUser;
-        4: SearchGroup;
-        5: inOrder(root);
-        6: print_node(root);
-        7: PrintSpisok;
-        8: FixFile;
-        9: writeln(#10 + 'Good bay.');
-        else
-        begin
-          writeln('Уточните выбор : ');
-          continue;
-        end;
-      end
-    end;}
 
 
