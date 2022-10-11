@@ -50,7 +50,7 @@ type
     procedure BPrintAllClick(Sender: TObject);
     procedure BSearchGrClick(Sender: TObject);
     procedure EFamClick(Sender: TObject);
-    procedure EFamKeyDown(Sender: TObject; var Key: Word);
+    procedure EFamKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure EGroupClick(Sender: TObject);
     procedure EGroupKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure EGroupKeyPress(Sender: TObject; var Key: char);
@@ -330,12 +330,14 @@ begin
    begin
    S := S  + ' ' + Trim(EGroup.Text);
    Memo.Lines.Text := 'Пользователь "' + S + '" добавлен в базу.';
+   ShowMessage('Пользователь "' + S + '" добавлен в базу.');
    insert(S);
    key := #0;
    end
    else if (Pos('Удалить', Memo.Lines.Text) > 0) then
   begin
      Memo.Lines.Text:='Пользователь "'+deletenode^.key+'" удален из базы.';
+     ShowMessage('Пользователь "'+deletenode^.key+'" удален из базы.');
      remove_node(deletenode);
      key := #0;
      ESearch.Clear;
@@ -344,6 +346,7 @@ end
 else if key = 'n'  then
 begin
     Memo.Lines.Add('Отмена операции.');
+    //ShowMessage('Отмена операции.');
     key := #0;
 end;
 end;
@@ -369,7 +372,10 @@ begin
         Memo.SetFocus
     end
     else
-      Memo.Lines.Text := 'Пользователь "' + S + '" уже имеется в базе.'
+    begin
+      Memo.Lines.Text := 'Пользователь "' + S + '" уже имеется в базе.' ;
+      ShowMessage('Пользователь "' + S + '" уже имеется в базе.');
+    end
   end
   else
     Memo.Lines.Text := 'Для добавления нового пользователя внимательно ' +

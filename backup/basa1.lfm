@@ -1,14 +1,14 @@
 object Form1: TForm1
-  Left = 394
+  Left = 358
   Height = 635
-  Top = 119
+  Top = 130
   Width = 726
   Caption = 'Basa users'
   ClientHeight = 609
   ClientWidth = 726
   Menu = MainMenu
   OnCreate = FormCreate
-  LCLVersion = '2.2.2.0'
+  LCLVersion = '2.2.4.0'
   object Memo: TMemo
     Left = 0
     Height = 327
@@ -217,21 +217,23 @@ object Form1: TForm1
       Caption = 'File'
       object Mm2: TMenuItem
         Caption = 'Open File'
+        ShortCut = 16463
         OnClick = Mm2Click
       end
       object Mm3: TMenuItem
         Caption = 'Save File'
+        ShortCut = 16467
         OnClick = Mm3Click
       end
     end
   end
   object OpenDialog: TOpenDialog
-    Left = 136
-    Top = 240
+    Left = 144
+    Top = 192
   end
   object SaveDialog: TSaveDialog
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
-    Left = 256
-    Top = 240
+    Left = 296
+    Top = 232
   end
 end
