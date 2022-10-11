@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, StdCtrls,
-  ExtCtrls, StrUtils, LCLType, spisokobr;
+  ExtCtrls, LCLType, spisokobr;
 
 type
 
@@ -272,7 +272,10 @@ begin
       Memo.Lines.Text := 'Для поиска введите инициалы пользователя' +
       'в графе Search FIO'
       else
-          searchAllkey(razbor(S))
+      begin
+         S[1] := UpCase(S[1]);
+         searchAllkey(razbor(S))
+      end;
    end;
 end;
 
@@ -315,14 +318,6 @@ begin
       ESearch.Text := Memo.SelText;
 end;
 
-{    //working in Windows 10
-with Memo do
-begin
-  Line:=SendMessage(Handle, EM_LINEFROMCHAR, SelStart,0);
-  SelStart :=SendMessage(Handle,EM_LINEINDEX, line, 0) ;
-  SelLength := Length(Lines[Line]) ;
-end;  }
-
 procedure TForm1.MemoKeyPress(Sender: TObject; var Key: char);
 begin
   if key = 'y' then
@@ -353,13 +348,15 @@ end;
 end;
 
 procedure TForm1.BAddClick(Sender: TObject);
+var Fa, Na, Pa: string;
 var n: Pnode;
 begin
     if (EFam.Text <> '') and (EName.Text <> '') and (EPName.Text <> '')
   and(EYear.Text <> '') {and (EGroup.Text <> '')} then
   begin
-    S := Trim(EFam.Text) + ' ' + Trim(EName.Text) + ' ' + Trim(EPName.Text) + ' ' +
-    Trim(EYear.Text); // + ' ' + Trim(EGroup.Text);
+    Fa := Trim(EFam.Text);  Na := Trim(EName.Text); Pa := Trim(EPName.Text);
+    Fa[1] := UpCase(Fa[1]); Na[1] := UpCase(Na[1]); Pa[1] := UpCase(Pa[1]);
+    S := Fa + ' ' + Na + ' ' + Pa + ' ' + Trim(EYear.Text); // Trim(EGroup.Text);
     n := search_node(root, S);
     if n = nil then
     begin

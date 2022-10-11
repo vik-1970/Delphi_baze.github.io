@@ -100,10 +100,10 @@ object Form1: TForm1
       TabOrder = 3
     end
     object BAdd: TButton
-      Left = 440
+      Left = 448
       Height = 25
       Top = 24
-      Width = 112
+      Width = 104
       Caption = 'Add User'
       OnClick = BAddClick
       TabOrder = 4
@@ -178,8 +178,8 @@ object Form1: TForm1
       Left = 352
       Height = 18
       Top = 24
-      Width = 74
-      Caption = 'Search FIO'
+      Width = 81
+      Caption = 'Search User'
       ParentColor = False
     end
     object BExit: TButton
