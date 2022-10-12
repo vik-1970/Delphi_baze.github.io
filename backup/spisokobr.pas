@@ -50,6 +50,7 @@ procedure RB_Go;
 procedure Destroy_node(node: Pnode);
 
 implementation
+var last: integer;
 
 procedure FixFile;
 begin
@@ -448,9 +449,7 @@ function OpenF_Go(Name_F: string): string;
 begin
   Pr := 0;
   AssignFile(H, Name_F);
-
   Reset(H);
-
     while not Eof(H) do
     begin
       readln(H, S);

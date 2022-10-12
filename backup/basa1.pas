@@ -348,8 +348,9 @@ end;
 end;
 
 procedure TForm1.BAddClick(Sender: TObject);
-var Fa, Na, Pa: string;
-var n: Pnode;
+var
+Fa, Na, Pa: string;
+n: Pnode;
 begin
     if (EFam.Text <> '') and (EName.Text <> '') and (EPName.Text <> '')
   and(EYear.Text <> '') {and (EGroup.Text <> '')} then
@@ -485,7 +486,8 @@ begin
        i := 0;
        Memo.Clear;
        inOrder(root);
-       Memo.Lines.Add(IntToStr(i) + ' пользовател' + okonc(i) + ' в базе.')
+       Memo.Lines.Add(Format('%d пользовател%s в базе.', [i, okonc(i)]));
+       //Memo.Lines.Add(IntToStr(i) + ' пользовател' + okonc(i) + ' в базе.')
       end;
 end;
 
@@ -498,8 +500,8 @@ begin
     if n = 0 then
       Form1.Memo.Lines.Text:='Группы "' + key + '" не найдено в базе.'
     else
-      Form1.Memo.Lines.Add('В группе '+'"'+key+'"'+'   '
-      +IntToStr(n)+' пользовател'+okonc(n)+'.');
+      Form1.Memo.Lines.Add('В группе "%s"  %d пользовател%s',[key, n, okonc(n)]);
+    //('В группе '+'"'+key+'"'+'   '+IntToStr(n)+' пользовател'+okonc(n)+'.');
 end;
 
 procedure searchGrNode(tree: Pnode; key: string; out n: integer);
@@ -560,7 +562,8 @@ begin
     if(tree <> nil)  then
     begin
         inOrder(tree^.left);
-        Form1.Memo.Lines.Add(tree^.key + ' ' + tree^.group);
+        Form1.Memo.Lines.Add('%s %s', [tree^.key, tree^.group]);
+        //Form1.Memo.Lines.Add(tree^.key + ' ' + tree^.group);
         inc(i);
         inOrder(tree^.right);
     end;
